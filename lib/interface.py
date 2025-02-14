@@ -91,6 +91,7 @@ check_upper = ctk.CTkCheckBox(
     hover_color='#1E90FF'
 )
 check_upper.place(x=60, y=350)
+check_upper.select()
 
 check_lower = ctk.CTkCheckBox(
     app,
@@ -106,6 +107,7 @@ check_lower = ctk.CTkCheckBox(
     hover_color='#1E90FF'
 )
 check_lower.place(x=231, y=350)
+check_lower.select()
 
 check_numbers = ctk.CTkCheckBox(
     app,
@@ -121,6 +123,7 @@ check_numbers = ctk.CTkCheckBox(
     hover_color='#1E90FF'
 )
 check_numbers.place(x=403, y=350)
+check_numbers.select()
 
 check_special = ctk.CTkCheckBox(
     app,
@@ -136,6 +139,7 @@ check_special = ctk.CTkCheckBox(
     hover_color='#1E90FF'
 )
 check_special.place(x=575, y=350)
+check_special.select()
 
     # Refresh button
 btn_refresh = ctk.CTkButton(
