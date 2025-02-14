@@ -14,15 +14,30 @@ def n_characters():
 
 def set_characters(use_upper, use_lower, use_numbers, use_special):
     global characters
+
+    global c_upper
+    global c_lower
+    global c_numbers
+    global c_special
+
+    c_upper = False
+    c_lower = False
+    c_numbers = False
+    c_special = False
+
     characters = ""
 
     if use_upper:
+        c_upper = True
         characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     if use_lower:
+        c_lower = True
         characters += "abcdefghijklmnopqrstuvwxyz"
     if use_numbers:
+        c_numbers = True
         characters += "1234567890"
     if use_special:
+        c_special = True
         characters += "!@#^&*"
 
 
@@ -40,10 +55,50 @@ def generatepassword(l = 12):
         else:
             password = ''.join(secrets.choice(characters) for i in range(l))
 
-        if (any(c.islower() for c in password)
-                and any(c.isupper() for c in password)
-                and sum(c.isdigit() for c in password) >= 4):
-            break
+            # Check if password has any upper characters
+            if c_upper == True:
+                check = False
+                while check == False:
+                    for c in password:
+                        if c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+                            check = True
+                            break
+                    if check == False:
+                        generatepassword(l)
+
+            # Check if password has any lower characters
+            if c_lower == True:
+                check = False
+                while check == False:
+                    for c in password:
+                        if c in 'abcdefghijklmnopqrstuvwxyz':
+                            check = True
+                            break
+                    if check == False:
+                        generatepassword(l)
+
+            # Check if password has any numbers characters
+            if c_numbers == True:
+                check = False
+                while check == False:
+                    for c in password:
+                        if c in '1234567890':
+                            check = True
+                            break
+                    if check == False:
+                        generatepassword(l)
+
+            # Check if password has any special characters
+            if c_special == True:
+                check = False
+                while check == False:
+                    for c in password:
+                        if c in '!@#^&*':
+                            check = True
+                            break
+                    if check == False:
+                        generatepassword(l)
+
         return password
 
 
