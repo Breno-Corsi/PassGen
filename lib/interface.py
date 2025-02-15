@@ -1,22 +1,6 @@
 from functions import *
 import customtkinter as ctk
 
-app = ctk.CTk()
-
-    # Define window parameters
-app.title('PassGen')
-app.iconbitmap('img\\notpassgen (512x512).ico')
-app.geometry("800x440")
-app.resizable(width=False, height=False)
-
-password_var = ctk.StringVar(value=generatepassword())
-
-upper_var = ctk.IntVar(value=0)
-lower_var = ctk.IntVar(value=0)
-numbers_var = ctk.IntVar(value=0)
-special_var = ctk.IntVar(value=0)
-
-
 def updatepassword():
     try:
         length = int(password_length.get())  # Convert input to integer
@@ -40,6 +24,23 @@ def update_characters():
     )
 
 
+app = ctk.CTk()
+
+    # Define window parameters
+app.title('PassGen')
+app.iconbitmap('img\\notpassgen (512x512).ico')
+app.geometry("800x640")
+app.resizable(width=False, height=False)
+
+    # Define initial parameters
+password_var = ctk.StringVar(value=generatepassword())
+user_url = str()
+
+upper_var = ctk.IntVar(value=0)
+lower_var = ctk.IntVar(value=0)
+numbers_var = ctk.IntVar(value=0)
+special_var = ctk.IntVar(value=0)
+
     # Generate password button
 button = ctk.CTkButton(
     app,
@@ -54,6 +55,19 @@ button = ctk.CTkButton(
 )
 button.place(x=60, y=50)
 
+    # URL entry
+entry_url = ctk.CTkEntry(
+    app,
+    #text_variable=user_url,
+    placeholder_text="URL",
+    width=680,
+    height=50,
+    corner_radius=5,
+    font=("Helvetica", 30),
+    text_color='white'
+)
+entry_url.place(x=60, y=150)
+
     # Password Display
 entry_password = ctk.CTkEntry(
     app,
@@ -64,7 +78,39 @@ entry_password = ctk.CTkEntry(
     font=("Helvetica", 30),
     text_color='yellow'
 )
-entry_password.place(x=60, y=150)
+entry_password.place(x=60, y=350)
+
+    # Refresh button
+btn_refresh = ctk.CTkButton(
+    app,
+    command=updatepassword,
+    text="⟳",
+    width=50,
+    height=50,
+    corner_radius=5,
+    border_width=0,
+    fg_color='transparent',
+    hover_color='#1E90FF',
+    text_color='white',
+    font=("Helvetica", 30)
+)
+btn_refresh.place(x=640, y=350)
+
+    # Copy button
+btn_copy = ctk.CTkButton(
+    app,
+    text="📋",
+    width=50,
+    height=50,
+    command=password_copy,
+    corner_radius=5,
+    border_width=0,
+    fg_color='transparent',
+    hover_color='#1E90FF',
+    text_color='white',
+    font=("Helvetica", 30)
+)
+btn_copy.place(x=690, y=350)
 
     # Password Length Input
 password_length = ctk.CTkEntry(
@@ -90,8 +136,8 @@ check_upper = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_upper.place(x=60, y=350)
-check_upper.select()
+check_upper.place(x=60, y=450)
+#check_upper.select()
 
 check_lower = ctk.CTkCheckBox(
     app,
@@ -106,8 +152,8 @@ check_lower = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_lower.place(x=231, y=350)
-check_lower.select()
+check_lower.place(x=231, y=450)
+#check_lower.select()
 
 check_numbers = ctk.CTkCheckBox(
     app,
@@ -122,8 +168,8 @@ check_numbers = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_numbers.place(x=403, y=350)
-check_numbers.select()
+check_numbers.place(x=403, y=450)
+#check_numbers.select()
 
 check_special = ctk.CTkCheckBox(
     app,
@@ -138,41 +184,7 @@ check_special = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_special.place(x=575, y=350)
-check_special.select()
-
-    # Refresh button
-btn_refresh = ctk.CTkButton(
-    app,
-    command=updatepassword,
-    text="⟳",
-    width=50,
-    height=50,
-    corner_radius=5,
-    border_width=0,
-    fg_color='transparent',
-    hover_color='#1E90FF',
-    text_color='white',
-    font=("Helvetica", 30)
-)
-btn_refresh.place(x=640, y=150)
-
-    # Copy button
-btn_copy = ctk.CTkButton(
-    app,
-    text="📋",
-    width=50,
-    height=50,
-    command=password_copy,
-    corner_radius=5,
-    border_width=0,
-    fg_color='transparent',
-    hover_color='#1E90FF',
-    text_color='white',
-    font=("Helvetica", 30)
-)
-btn_copy.place(x=690, y=150)
-
-#characters = str()
+check_special.place(x=575, y=450)
+#check_special.select()
 
 app.mainloop()
