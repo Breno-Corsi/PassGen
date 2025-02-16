@@ -46,7 +46,7 @@ button = ctk.CTkButton(
     app,
     command=updatepassword,
     text="Generate Password",
-    width=340,
+    width=300,
     height=50,
     corner_radius=5,
     hover_color='#1E90FF',
@@ -54,6 +54,19 @@ button = ctk.CTkButton(
     font=("Helvetica", 30)
 )
 button.place(x=60, y=50)
+
+    # Store credential button
+button = ctk.CTkButton(
+    app,
+    text="Store Credential",
+    width=240,
+    height=50,
+    corner_radius=5,
+    hover_color='#1E90FF',
+    text_color='White',
+    font=("Helvetica", 30)
+)
+button.place(x=500, y=50)
 
     # URL entry
 entry_url = ctk.CTkEntry(
@@ -67,6 +80,19 @@ entry_url = ctk.CTkEntry(
     text_color='white'
 )
 entry_url.place(x=60, y=150)
+
+    # Username entry
+entry_url = ctk.CTkEntry(
+    app,
+    #text_variable=user_url,
+    placeholder_text="Username",
+    width=680,
+    height=50,
+    corner_radius=5,
+    font=("Helvetica", 30),
+    text_color='white'
+)
+entry_url.place(x=60, y=250)
 
     # Password Display
 entry_password = ctk.CTkEntry(
@@ -120,7 +146,7 @@ password_length = ctk.CTkEntry(
     corner_radius=5,
     font=("Helvetica", 30)
 )
-password_length.place(x=60, y=250)
+password_length.place(x=60, y=450)
 
     # Character Selection Checkboxes
 check_upper = ctk.CTkCheckBox(
@@ -136,7 +162,7 @@ check_upper = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_upper.place(x=60, y=450)
+check_upper.place(x=60, y=550)
 #check_upper.select()
 
 check_lower = ctk.CTkCheckBox(
@@ -152,7 +178,7 @@ check_lower = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_lower.place(x=231, y=450)
+check_lower.place(x=231, y=550)
 #check_lower.select()
 
 check_numbers = ctk.CTkCheckBox(
@@ -168,7 +194,7 @@ check_numbers = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_numbers.place(x=403, y=450)
+check_numbers.place(x=403, y=550)
 #check_numbers.select()
 
 check_special = ctk.CTkCheckBox(
@@ -184,7 +210,7 @@ check_special = ctk.CTkCheckBox(
     border_width=4,
     hover_color='#1E90FF'
 )
-check_special.place(x=575, y=450)
+check_special.place(x=575, y=550)
 #check_special.select()
 
 app.mainloop()
