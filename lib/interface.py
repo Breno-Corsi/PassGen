@@ -28,7 +28,7 @@ app = ctk.CTk()
 
     # Define window parameters
 app.title('PassGen')
-app.iconbitmap('img\\notpassgen (512x512).ico')
+app.iconbitmap("img\\notpassgen (512x512).ico")
 app.geometry("800x640")
 app.resizable(width=False, height=False)
 
@@ -41,17 +41,23 @@ lower_var = ctk.IntVar(value=0)
 numbers_var = ctk.IntVar(value=0)
 special_var = ctk.IntVar(value=0)
 
+    # Define widget parameters
+h_color='#1E90FF'
+c_radius=5
+p_height=50
+p_font=("Helvetica", 30)
+
     # Generate password button
 button = ctk.CTkButton(
     app,
     command=updatepassword,
     text="Generate Password",
     width=300,
-    height=50,
-    corner_radius=5,
-    hover_color='#1E90FF',
+    height=p_height,
+    corner_radius=c_radius,
+    hover_color=h_color,
     text_color='White',
-    font=("Helvetica", 30)
+    font=p_font
 )
 button.place(x=60, y=50)
 
@@ -60,23 +66,22 @@ button = ctk.CTkButton(
     app,
     text="Store Credential",
     width=240,
-    height=50,
-    corner_radius=5,
-    hover_color='#1E90FF',
+    height=p_height,
+    corner_radius=c_radius,
+    hover_color=h_color,
     text_color='White',
-    font=("Helvetica", 30)
+    font=p_font
 )
 button.place(x=500, y=50)
 
     # URL entry
 entry_url = ctk.CTkEntry(
     app,
-    #text_variable=user_url,
-    placeholder_text="URL",
+    placeholder_text="url.com",
     width=680,
-    height=50,
-    corner_radius=5,
-    font=("Helvetica", 30),
+    height=p_height,
+    corner_radius=c_radius,
+    font=p_font,
     text_color='white'
 )
 entry_url.place(x=60, y=150)
@@ -87,9 +92,9 @@ entry_url = ctk.CTkEntry(
     #text_variable=user_url,
     placeholder_text="Username",
     width=680,
-    height=50,
-    corner_radius=5,
-    font=("Helvetica", 30),
+    height=p_height,
+    corner_radius=c_radius,
+    font=p_font,
     text_color='white'
 )
 entry_url.place(x=60, y=250)
@@ -99,9 +104,9 @@ entry_password = ctk.CTkEntry(
     app,
     textvariable=password_var,
     width=580,
-    height=50,
-    corner_radius=5,
-    font=("Helvetica", 30),
+    height=p_height,
+    corner_radius=c_radius,
+    font=p_font,
     text_color='yellow'
 )
 entry_password.place(x=60, y=350)
@@ -112,13 +117,12 @@ btn_refresh = ctk.CTkButton(
     command=updatepassword,
     text="⟳",
     width=50,
-    height=50,
-    corner_radius=5,
-    border_width=0,
+    height=p_height,
+    corner_radius=c_radius,
     fg_color='transparent',
-    hover_color='#1E90FF',
+    hover_color=h_color,
     text_color='white',
-    font=("Helvetica", 30)
+    font=p_font
 )
 btn_refresh.place(x=640, y=350)
 
@@ -127,14 +131,13 @@ btn_copy = ctk.CTkButton(
     app,
     text="📋",
     width=50,
-    height=50,
+    height=p_height,
     command=password_copy,
-    corner_radius=5,
-    border_width=0,
+    corner_radius=c_radius,
     fg_color='transparent',
-    hover_color='#1E90FF',
+    hover_color=h_color,
     text_color='white',
-    font=("Helvetica", 30)
+    font=p_font
 )
 btn_copy.place(x=690, y=350)
 
@@ -142,9 +145,10 @@ btn_copy.place(x=690, y=350)
 password_length = ctk.CTkEntry(
     app,
     placeholder_text="Password Length",
-    width=680, height=50,
-    corner_radius=5,
-    font=("Helvetica", 30)
+    width=680,
+    height=p_height,
+    corner_radius=c_radius,
+    font=p_font
 )
 password_length.place(x=60, y=450)
 
@@ -156,11 +160,11 @@ check_upper = ctk.CTkCheckBox(
     onvalue=1,
     offvalue=0,
     text=" A - Z",
-    checkbox_height=50,
+    checkbox_height=p_height,
     checkbox_width=50,
-    font=("Helvetica", 30),
+    font=p_font,
     border_width=4,
-    hover_color='#1E90FF'
+    hover_color=h_color
 )
 check_upper.place(x=60, y=550)
 #check_upper.select()
@@ -172,11 +176,11 @@ check_lower = ctk.CTkCheckBox(
     onvalue=1,
     offvalue=0,
     text=" a - z",
-    checkbox_height=50,
+    checkbox_height=p_height,
     checkbox_width=50,
-    font=("Helvetica", 30),
+    font=p_font,
     border_width=4,
-    hover_color='#1E90FF'
+    hover_color=h_color
 )
 check_lower.place(x=231, y=550)
 #check_lower.select()
@@ -188,11 +192,11 @@ check_numbers = ctk.CTkCheckBox(
     onvalue=1,
     offvalue=0,
     text=" 0 - 9",
-    checkbox_height=50,
+    checkbox_height=p_height,
     checkbox_width=50,
-    font=("Helvetica", 30),
+    font=p_font,
     border_width=4,
-    hover_color='#1E90FF'
+    hover_color=h_color
 )
 check_numbers.place(x=403, y=550)
 #check_numbers.select()
@@ -204,11 +208,11 @@ check_special = ctk.CTkCheckBox(
     onvalue=1,
     offvalue=0,
     text=" !@#^&*",
-    checkbox_height=50,
+    checkbox_height=p_height,
     checkbox_width=50,
-    font=("Helvetica", 30),
+    font=p_font,
     border_width=4,
-    hover_color='#1E90FF'
+    hover_color=h_color
 )
 check_special.place(x=575, y=550)
 #check_special.select()

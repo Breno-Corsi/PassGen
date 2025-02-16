@@ -1,6 +1,7 @@
 from os import system, name
 import secrets
 from subprocess import run
+#import json
 
 # Global variables
 global characters
@@ -109,3 +110,9 @@ def password_copy():
 
     else: # Linux or macOS
         run("xclip -selection clipboard", input=password, text=True, shell=True)
+
+
+def store_credential():
+    with open('user/Credentials.json', 'wt') as credential_file:
+        credential_file.close()
+    
