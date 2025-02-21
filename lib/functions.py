@@ -1,7 +1,7 @@
-from os import system, name
+import os
 import secrets
 from subprocess import run
-#import json
+import json
 
 # Global variables
 global characters
@@ -112,7 +112,39 @@ def password_copy():
         run("xclip -selection clipboard", input=password, text=True, shell=True)
 
 
-def store_credential():
-    with open('user/Credentials.json', 'wt') as credential_file:
-        credential_file.close()
-    
+# This function is for testing only
+def store_credential(url, username, password):
+
+    credential_dir = os.path.expandvars('%APPDATA%\\passgen\\credentials')
+    credential_file = os.path.join(credential_dir, 'secret.json')
+
+    credential_data = {
+        "url": url,
+        "username": username,
+        "password": password
+    }
+
+    try:
+        os.makedirs(credential_dir, exist_ok=True)
+        
+        with open(credential_file, 'r') as file:
+            if file.read() == '':
+                with open(credential_file, 'a') as file:
+                    json.dump(credential_data, file, indent=4)
+            else:
+                with open(credential_file, 'a') as file:
+                    file.write('\n')
+                    json.dump(credential_data, file, indent=4)
+
+    except PermissionError:
+        print(f"Permission denied: Unable to create '{credential_file}'.")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+# url = 'google.com'
+# username = 'example a'
+# password = 12341234
+
+# store_credential(url, username, password)
